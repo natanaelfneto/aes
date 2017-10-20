@@ -25,7 +25,6 @@ Usage
 Note, that as version 0.1.x, you must be concerned with the endianess of your input data. It expects that the `key` is a regular JavaScript array of 4,6,8 or 32-bit unsigned values. The encrypt function is a regular JavaScript array of 4 32-bit big endian unsigned integers.
 
 ```
-js
 var AES = require('aes')
 
 var key = [0xffffffff,0xffffffff,0xffffffff,0xffffffff,0xffffffff,0xfffffff8];
@@ -42,16 +41,13 @@ console.dir(aes.decrypt(ct)); // => [0x00000000,0x00000000,0x00000000,0x00000000
 Note, that as version 0.2.x, you must be concerned with the endianess of your input data. It expects that the `key` is a regular JavaScript array of 4,6,8 or 32-bit unsigned values. The encrypt function is a regular JavaScript array of any length.
 
 ```
-js
-var AES = require('aes')
+var AES = require('../lib/aes')
 
-var key = [0xffffffff,0xffffffff,0xffffffff,0xffffffff,0xffffffff,0xfffffff8];
-var pt = [0x00000000,0x00000000,0x00000000,0x00000000];
-var ct = [0xd241aab0,0x5a42d319,0xde81d874,0xf5c7b90d];
+var key = '12345678';
+var pt = 'Message to be ciphered';
 
-var aes = new AES(key);
-console.dir(aes.encrypt(pt)); // => [0xd241aab0,0x5a42d319,0xde81d874,0xf5c7b90d]
-console.dir(aes.decrypt(ct)); // => [0x00000000,0x00000000,0x00000000,0x00000000]
+var aes = new AES(pt,key);
+console.dir(`Mensagem cifrada: ${aes}`);
 ```
 
 ### Testing
